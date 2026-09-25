@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin-dashboard
+Disallow: /admin-*
+Disallow: /seller-dashboard
+Disallow: /agent-dashboard
+Disallow: /agent-*
+Disallow: /messages
+Disallow: /settings
+Disallow: /checkout
+
+Sitemap: https://suqafuran.com/sitemap.xml

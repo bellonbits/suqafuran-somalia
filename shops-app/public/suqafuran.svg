@@ -1,0 +1,13 @@
+<svg viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo container -->
+  <rect x="0" y="0" width="60" height="60" rx="12" fill="#0EA5E9" opacity="0.15"/>
+
+  <!-- Triangle S shape (primary) -->
+  <path d="M 15 45 L 30 15 L 45 45 Z" fill="#0EA5E9" stroke="none"/>
+  
+  <!-- Triangle accent -->
+  <path d="M 20 35 L 30 18 L 40 35 Z" fill="#0284C7" opacity="0.7" stroke="none"/>
+
+  <!-- Text: Suqafuran -->
+  <text x="70" y="44" font-family="Arial, sans-serif" font-size="36" font-weight="900" fill="currentColor">Suqafuran</text>
+</svg>

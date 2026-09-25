@@ -1,0 +1,80 @@
+# Suqafuran — SPA routing + cache control
+# Regenerated on every deploy; do not edit the copy on the server directly.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Serve real files/directories as-is (assets, images, favicon, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Social-media link-preview crawlers AND search-engine crawlers don't run
+  # JS on the first pass, so they'd otherwise get the same generic
+  # site-wide title/description on every /listing/{id} and /shop/{slug}
+  # page -- the root cause of Search Console showing hundreds of these
+  # pages as "Discovered/Crawled - currently not indexed" and "Duplicate
+  # without user-selected canonical" (every one of these URLs was
+  # byte-identical HTML with no canonical tag at crawl time). Hand
+  # crawlers a tiny server-rendered page with the real title, description
+  # and canonical URL instead -- real visitors never match this and
+  # continue straight to the SPA below. This is Google's documented
+  # "dynamic rendering" pattern for JS-heavy sites, not cloaking: bots get
+  # the same substantive content real users see, just pre-rendered.
+  RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Facebot|WhatsApp|Twitterbot|LinkedInBot|TelegramBot|Slackbot|Discordbot|Pinterest|redditbot|SkypeUriPreview|vkShare|Applebot|Googlebot|AdsBot-Google|Bingbot|DuckDuckBot|YandexBot) [NC]
+  RewriteRule ^listing/([0-9]+)/?$ listing-share.php?id=$1 [L,QSA]
+  RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Facebot|WhatsApp|Twitterbot|LinkedInBot|TelegramBot|Slackbot|Discordbot|Pinterest|redditbot|SkypeUriPreview|vkShare|Applebot|Googlebot|AdsBot-Google|Bingbot|DuckDuckBot|YandexBot) [NC]
+  RewriteRule ^shop/([a-zA-Z0-9-]+)/?$ shop-share.php?slug=$1 [L,QSA]
+
+  # Everything else goes through index.html so React Router can handle the route
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Security headers -- mirrors backend/app/main.py so the frontend and API
+  # present the same policy. CSP is intentionally permissive (allows any
+  # https: source) rather than an allowlist, since the SPA pulls from
+  # Cloudinary, Google Maps, OneSignal, etc. and a tighter policy would need
+  # every third party enumerated and kept in sync.
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Content-Security-Policy "default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; frame-ancestors 'self';"
+
+  # index.html must always be revalidated so visitors get the new build
+  # (and its reference to the new hashed JS/CSS) immediately after a deploy,
+  # instead of a stale cached copy of the old site.
+  <FilesMatch "^index\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # Hashed build assets (filename changes whenever content changes) are safe
+  # to cache aggressively and permanently.
+  <FilesMatch "\.(js|css|woff2?|ttf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.(png|jpg|jpeg|gif|svg|ico|webp)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+
+  # sw.js is a kill-switch for service workers left over from old deploys —
+  # it must never be cached, or stuck clients can never fetch the real thing.
+  # Placed after the generic .js rule above so it wins (last Header set applies).
+  <FilesMatch "^sw\.js$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
+
+# Belt-and-suspenders for servers/proxies that ignore Cache-Control on HTML
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
