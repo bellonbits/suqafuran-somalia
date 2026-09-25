@@ -1,0 +1,579 @@
+﻿python : C:\Users\lea
+rn\Desktop\suqafuran\
+backend\app\seed_show
+case.py:20: 
+DeprecationWarning: d
+atetime.datetime.utcn
+ow() is deprecated 
+and scheduled for 
+removal in a future 
+version. Use 
+timezone-aware 
+objects to represent 
+datetimes in UTC: dat
+etime.datetime.now(da
+tetime.UTC).
+At line:1 char:1
++ python -m 
+app.seed_showcase 
+2>&1 | Out-File 
+-FilePath 
+full_error.txt  ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (C:\User   
+ s\learn\...(date    
+time.UTC).:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+  "created_at": 
+datetime.utcnow() - 
+timedelta(days=1095) 
+# 3+ years
+C:\Users\learn\Deskto
+p\suqafuran\backend\a
+pp\seed_showcase.py:2
+9: 
+DeprecationWarning: d
+atetime.datetime.utcn
+ow() is deprecated 
+and scheduled for 
+removal in a future 
+version. Use 
+timezone-aware 
+objects to represent 
+datetimes in UTC: dat
+etime.datetime.now(da
+tetime.UTC).
+  "created_at": 
+datetime.utcnow() - 
+timedelta(days=730) 
+# 2+ years
+C:\Users\learn\Deskto
+p\suqafuran\backend\a
+pp\seed_showcase.py:3
+8: 
+DeprecationWarning: d
+atetime.datetime.utcn
+ow() is deprecated 
+and scheduled for 
+removal in a future 
+version. Use 
+timezone-aware 
+objects to represent 
+datetimes in UTC: dat
+etime.datetime.now(da
+tetime.UTC).
+  "created_at": 
+datetime.utcnow() - 
+timedelta(days=365) 
+# 1+ year
+C:\Users\learn\Deskto
+p\suqafuran\backend\a
+pp\seed_showcase.py:4
+7: 
+DeprecationWarning: d
+atetime.datetime.utcn
+ow() is deprecated 
+and scheduled for 
+removal in a future 
+version. Use 
+timezone-aware 
+objects to represent 
+datetimes in UTC: dat
+etime.datetime.now(da
+tetime.UTC).
+  "created_at": 
+datetime.utcnow() - 
+timedelta(days=500)
+Traceback (most 
+recent call last):
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\eng
+ine\base.py", line 
+1967, in 
+_exec_single_context
+    self.dialect.do_e
+xecute(
+    ~~~~~~~~~~~~~~~~~
+~~~~~~^
+        cursor, 
+str_statement, effect
+ive_parameters, 
+context
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\eng
+ine\default.py", 
+line 952, in 
+do_execute
+    cursor.execute(st
+atement, parameters)
+    ~~~~~~~~~~~~~~^^^
+^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.Inval
+idTextRepresentation:
+ invalid input value 
+for enum 
+userverifiedlevel: 
+"GUEST"
+LINE 1: 
+...example.com', 
+'+252610000001', 
+true, true, false, 
+'GUEST', N...
+                     
+                     
+                   ^
+
+
+The above exception 
+was the direct cause 
+of the following 
+exception:
+
+Traceback (most 
+recent call last):
+  File "<frozen 
+runpy>", line 198, 
+in 
+_run_module_as_main
+  File "<frozen 
+runpy>", line 88, in 
+_run_code
+  File "C:\Users\lear
+n\Desktop\suqafuran\b
+ackend\app\seed_showc
+ase.py", line 171, 
+in <module>
+    seed_showcase()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\lear
+n\Desktop\suqafuran\b
+ackend\app\seed_showc
+ase.py", line 54, in 
+seed_showcase
+    existing_user = s
+ession.exec(statement
+).first()
+                    ~
+~~~~~~~~~~~^^^^^^^^^^
+^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlmodel\orm\s
+ession.py", line 81, 
+in exec
+    results = 
+super().execute(
+        statement,
+    ...<4 lines>...
+        _add_event=_a
+dd_event,
+    )
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\session.py", line 
+2351, in execute
+    return self._exec
+ute_internal(
+           ~~~~~~~~~~
+~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_a
+dd_event,
+        ^^^^^^^^^^^^^
+^^^^^^^^^
+    )
+    ^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\session.py", line 
+2228, in 
+_execute_internal
+    ) = compile_state
+_cls.orm_pre_session_
+exec(
+        ~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        False,
+        ^^^^^^
+    )
+    ^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\context.py", line 
+577, in 
+orm_pre_session_exec
+    
+session._autoflush()
+    
+~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\session.py", line 
+3051, in _autoflush
+    raise e.with_trac
+eback(sys.exc_info()[
+2])
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\session.py", line 
+3040, in _autoflush
+    self.flush()
+    ~~~~~~~~~~^^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\session.py", line 
+4331, in flush
+    
+self._flush(objects)
+    
+~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\session.py", line 
+4466, in _flush
+    with 
+util.safe_reraise():
+         
+~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\uti
+l\langhelpers.py", 
+line 224, in __exit__
+    raise exc_value.w
+ith_traceback(exc_tb)
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\session.py", line 
+4427, in _flush
+    flush_context.exe
+cute()
+    ~~~~~~~~~~~~~~~~~
+~~~~^^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\unitofwork.py", 
+line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\unitofwork.py", 
+line 642, in execute
+    util.preloaded.or
+m_persistence.save_ob
+j(
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_fo
+r_mapper_hierarchy(se
+lf.mapper, False, 
+False),
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\persistence.py", 
+line 93, in save_obj
+    _emit_insert_stat
+ements(
+    ~~~~~~~~~~~~~~~~~
+~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\orm
+\persistence.py", 
+line 1233, in _emit_i
+nsert_statements
+    result = 
+connection.execute(
+        statement,
+        params,
+        execution_opt
+ions=execution_option
+s,
+    )
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\eng
+ine\base.py", line 
+1419, in execute
+    return meth(
+        self,
+        
+distilled_parameters,
+        
+execution_options or 
+NO_OPTIONS,
+    )
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\sql
+\elements.py", line 
+527, in _execute_on_c
+onnection
+    return connection
+._execute_clauseeleme
+nt(
+           ~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~^
+        self, 
+distilled_params, 
+execution_options
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^
+    )
+    ^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\eng
+ine\base.py", line 
+1641, in _execute_cla
+useelement
+    ret = self._execu
+te_context(
+        dialect,
+    ...<8 lines>...
+        
+cache_hit=cache_hit,
+    )
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\eng
+ine\base.py", line 
+1846, in 
+_execute_context
+    return self._exec
+_single_context(
+           ~~~~~~~~~~
+~~~~~~~~~~~~~~~^
+        dialect, 
+context, statement, 
+parameters
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+    )
+    ^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\eng
+ine\base.py", line 
+1986, in 
+_exec_single_context
+    self._handle_dbap
+i_exception(
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~^
+        e, 
+str_statement, effect
+ive_parameters, 
+cursor, context
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\eng
+ine\base.py", line 
+2363, in _handle_dbap
+i_exception
+    raise sqlalchemy_
+exception.with_traceb
+ack(exc_info[2]) 
+from e
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\eng
+ine\base.py", line 
+1967, in 
+_exec_single_context
+    self.dialect.do_e
+xecute(
+    ~~~~~~~~~~~~~~~~~
+~~~~~~^
+        cursor, 
+str_statement, effect
+ive_parameters, 
+context
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\lear
+n\AppData\Roaming\Pyt
+hon\Python314\site-pa
+ckages\sqlalchemy\eng
+ine\default.py", 
+line 952, in 
+do_execute
+    cursor.execute(st
+atement, parameters)
+    ~~~~~~~~~~~~~~^^^
+^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.DataEr
+ror: (raised as a 
+result of 
+Query-invoked 
+autoflush; consider 
+using a 
+session.no_autoflush 
+block if this flush 
+is occurring 
+prematurely)
+(psycopg2.errors.Inva
+lidTextRepresentation
+) invalid input 
+value for enum 
+userverifiedlevel: 
+"GUEST"
+LINE 1: 
+...example.com', 
+'+252610000001', 
+true, true, false, 
+'GUEST', N...
+                     
+                     
+                   ^
+
+[SQL: INSERT INTO 
+"user" (full_name, 
+email, phone, 
+is_active, 
+is_verified, 
+is_admin, 
+verified_level, 
+avatar_url, 
+response_time, 
+email_notifications, 
+sms_notifications, 
+hashed_password, 
+created_at, 
+updated_at) VALUES 
+(%(full_name)s, 
+%(email)s, 
+%(phone)s, 
+%(is_active)s, 
+%(is_verified)s, 
+%(is_admin)s, 
+%(verified_level)s, 
+%(avatar_url)s, 
+%(response_time)s, %(
+email_notifications)s
+, %(sms_notifications
+)s, 
+%(hashed_password)s, 
+%(created_at)s, 
+%(updated_at)s) 
+RETURNING "user".id]
+[parameters: 
+{'full_name': 
+'Somali Auto 
+Spares', 'email': 
+'auto@example.com', 
+'phone': 
+'+252610000001', 
+'is_active': True, 
+'is_verified': True, 
+'is_admin': False, 
+'verified_level': 
+'GUEST', 
+'avatar_url': None, 
+'response_time': 
+'Typically responds 
+within minutes', 'ema
+il_notifications': 
+True, 
+'sms_notifications': 
+False, 
+'hashed_password': '$
+2b$12$UqSLuTvrZnWsNEF
+gng3FD.Er.iTtuw5jwWLv
+eG5JK8ILE6ea6J97u', 
+'created_at': datetim
+e.datetime(2023, 2, 
+15, 22, 1, 25, 
+778861), 
+'updated_at': datetim
+e.datetime(2026, 2, 
+14, 22, 1, 31, 
+469950)}]
+(Background on this 
+error at: https://sql
+alche.me/e/20/9h9h)

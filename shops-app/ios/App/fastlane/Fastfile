@@ -1,0 +1,37 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build IPA"
+
+  lane :build do
+    if is_ci
+      sh("rm -rf ~/Library/Developer/Xcode/DerivedData/* || true")
+
+      update_code_signing_settings(
+        use_automatic_signing: false,
+        path: "App.xcodeproj",
+        team_id: "2969422VU2",
+        bundle_identifier: "com.suqafuran.app",
+        profile_name: "com.suqafuran.app AppStore"
+      )
+    end
+
+    build_app(
+      project: "App.xcodeproj",
+      scheme: "App",
+      configuration: "Release",
+      clean: true,
+      sdk: "iphoneos",
+      export_method: "app-store",
+      output_directory: File.expand_path("~/Desktop/SuqafuranIPA"),
+      output_name: "Suqafuran.ipa",
+      export_options: {
+        signingStyle: "manual",
+        teamID: "2969422VU2",
+        provisioningProfiles: {
+          "com.suqafuran.app" => "com.suqafuran.app AppStore"
+        }
+      }
+    )
+  end
+end

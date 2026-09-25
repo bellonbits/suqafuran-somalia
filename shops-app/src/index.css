@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+:root {
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
+  --border: #E2E8F0;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --sidebar-bg: #0f172a;
+  --sidebar-accent: #1e293b;
+  --sidebar-active: #38bdf8;
+  --primary: #38bdf8;
+  --primary-dark: #0284c7;
+}
+
+.dark {
+  --background: #0B132B;
+  --foreground: #F8FAFC;
+  --card: #1C2541;
+  --card-foreground: #F8FAFC;
+  --border: #3A506B;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--background);
+  color: var(--foreground);
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+/* Ensure the full viewport is used including behind status bar (iOS viewport-fit=cover) */
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+textarea,
+select {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* iOS Safari/WKWebView auto-zooms the page when an input whose font size is
+   under 16px gets focus. The previous bare `input { font-size: 16px }` rule
+   never worked: element selectors lose to Tailwind utility classes, so any
+   input with text-sm/text-xs (including both search bars) stayed at 14px/12px
+   and still zoomed. !important is needed to beat those utilities, and
+   -webkit-touch-callout is only supported by iOS WebKit, so Android and
+   desktop keep their designed sizes. Not using maximum-scale=1 on the
+   viewport instead -- that would disable pinch-zoom entirely, an
+   accessibility regression. */
+@supports (-webkit-touch-callout: none) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Safe Area Insets for iOS Native / Capacitor */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.pl-safe {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+.pr-safe {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Mobile app container - fill viewport */
+.mobile-app {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.dark .glass {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Custom premium card shadow */
+.card-shadow {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+.card-shadow-premium {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* Custom elevated button shadow */
+.btn-shadow-elevated {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Scrollbar hide utility */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Thin sidebar scrollbar */
+.sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #334155 #0f172a;
+}
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 2px;
+}
+
+/* Custom button transition details */
+.btn-premium {
+  @apply relative overflow-hidden transition-all duration-300 active:scale-95 cursor-pointer rounded-2xl font-bold flex items-center justify-center gap-2;
+}
+
+/* Back to Store button */
+.btn-back {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-50 border border-sky-200 text-sky-700 font-semibold text-sm hover:bg-sky-100 transition-all duration-200 hover:shadow-sm;
+}
+
+/* ─── PREMIUM DATA TABLE ─────────────────────────────── */
+.data-table-wrapper {
+  @apply bg-white dark:bg-[#151D2A] rounded-3xl border border-slate-100 dark:border-slate-800 overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.03)];
+}
+
+.data-table {
+  @apply w-full border-collapse;
+  font-size: 0.8125rem;
+}
+
+.data-table thead {
+  @apply sticky top-0 z-10;
+}
+
+.data-table thead tr {
+  @apply bg-slate-50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800;
+}
+
+.data-table th {
+  @apply px-5 py-3 text-left text-[11px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500 whitespace-nowrap;
+}
+
+.data-table th:first-child {
+  @apply pl-6;
+}
+
+.data-table th:last-child {
+  @apply pr-6;
+}
+
+.data-table tbody tr {
+  @apply border-b border-slate-50 dark:border-slate-800/40 transition-colors duration-150 hover:bg-indigo-50/30 dark:hover:bg-slate-800/30;
+}
+
+.data-table tbody tr:last-child {
+  @apply border-b-0;
+}
+
+.data-table tbody tr:nth-child(even) {
+  @apply bg-slate-50/40 dark:bg-slate-900/20;
+}
+
+.data-table tbody tr:nth-child(even):hover {
+  @apply bg-indigo-50/30 dark:bg-slate-800/30;
+}
+
+.data-table td {
+  @apply px-5 py-3.5 text-slate-700 dark:text-slate-300 align-middle;
+}
+
+.data-table td:first-child {
+  @apply pl-6;
+}
+
+.data-table td:last-child {
+  @apply pr-6;
+}
+
+/* Status badges */
+.badge {
+  @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-2xl text-[11px] font-bold whitespace-nowrap;
+}
+.badge-green  { @apply bg-emerald-50 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-400; }
+.badge-yellow { @apply bg-amber-50 text-amber-700 dark:bg-amber-950/30 dark:text-amber-400; }
+.badge-red    { @apply bg-rose-50 text-rose-600 dark:bg-rose-950/30 dark:text-rose-400; }
+.badge-blue   { @apply bg-sky-50 text-sky-700 dark:bg-sky-950/30 dark:text-sky-400; }
+.badge-gray   { @apply bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400; }
+.badge-purple { @apply bg-purple-50 text-purple-700 dark:bg-purple-950/30 dark:text-purple-400; }
+.badge-orange { @apply bg-orange-50 text-orange-700 dark:bg-orange-950/30 dark:text-orange-400; }
+
+/* Stat card */
+.stat-card {
+  @apply bg-white dark:bg-[#151D2A] rounded-3xl border border-slate-100 dark:border-slate-800 p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-shadow duration-200;
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+@media (max-width: 767px) {
+  .bottom-nav-safe {
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 10px);
+  }
+  .content-bottom-safe {
+    padding-bottom: calc(76px + max(env(safe-area-inset-bottom, 0px), 10px));
+  }
+}
+
+/* ── Storefront UI checkbox tick ──────────────────────────────────────────
+   SfCheckbox draws its tick with `bg-checked-checkbox-current`, which only
+   exists in the SFUI Tailwind preset (not loaded here) -- without this a
+   checked box is just an empty square. */
+.sf-check:checked {
+  background-color: #f97316;
+  border-color: #f97316;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ── Dual-thumb price slider: two stacked range inputs, only thumbs clickable ── */
+.range-dual {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+}
+.range-dual::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 2px solid #f97316;
+  cursor: grab;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+.range-dual::-moz-range-thumb {
+  pointer-events: auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 2px solid #f97316;
+  cursor: grab;
+}
+.range-dual:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid #fb923c;
+  outline-offset: 2px;
+}

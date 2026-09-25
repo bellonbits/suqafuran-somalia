@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: suqafuran-config
+  namespace: suqafuran
+data:
+  # API Configuration
+  API_HOST: "0.0.0.0"
+  API_PORT: "8000"
+  WORKERS: "4"
+
+  # Timeouts (in seconds)
+  REQUEST_TIMEOUT: "60"
+  DATABASE_TIMEOUT: "30"
+  CACHE_TIMEOUT: "300"
+  EXTERNAL_API_TIMEOUT: "45"
+
+  # Connection Pooling
+  DB_POOL_SIZE: "20"
+  DB_MAX_OVERFLOW: "40"
+  DB_POOL_TIMEOUT: "30"
+  DB_POOL_RECYCLE: "3600"
+
+  # Redis Cache
+  REDIS_MAX_CONNECTIONS: "50"
+  REDIS_TIMEOUT: "10"
+  REDIS_RETRY_ON_TIMEOUT: "true"
+
+  # Rate Limiting
+  RATE_LIMIT_ENABLED: "true"
+  RATE_LIMIT_PER_MINUTE: "1000"
+
+  # Logging
+  LOG_LEVEL: "info"
+  LOG_FORMAT: "json"
+
+  # Performance
+  ENABLE_RESPONSE_COMPRESSION: "true"
+  COMPRESSION_LEVEL: "6"
+
+  # Caching
+  CACHE_TTL_LISTINGS: "300"
+  CACHE_TTL_SHOPS: "300"
+  CACHE_TTL_CATEGORIES: "3600"
+  CACHE_TTL_USERS: "600"
+
+  # CORS
+  ALLOWED_ORIGINS: "http://localhost:3000,http://localhost:5173,https://suqafuran.com"
+
+  # Environment
+  ENVIRONMENT: "production"
+  DEBUG: "false"

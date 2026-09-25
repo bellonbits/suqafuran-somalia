@@ -1,0 +1,1 @@
+document_type, status, notes, document_urls, id, user_id, created_at, updated_at, selfie_url, facial_match_score, auto_verification_status

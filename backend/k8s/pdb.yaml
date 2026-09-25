@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: suqafuran-api-pdb
+  namespace: suqafuran
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: suqafuran-api

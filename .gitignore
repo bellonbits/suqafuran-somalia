@@ -1,0 +1,50 @@
+# ── Secrets (never commit) ─────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.p12
+*.pem
+*.cer
+*.certSigningRequest
+*.mobileprovision
+p12.base64
+*.jks
+*.keystore
+google-services.json
+GoogleService-Info.plist
+*SECRETS*.txt
+
+# ── Local databases, logs, dumps ───────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.dump
+backend/celerybeat-schedule*
+backend/uploads/
+
+# ── Python ─────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.pytest_cache/
+
+# ── Node / web build ───────────────────────────────────────────────────
+node_modules/
+dist/
+dist-ssr/
+*.tsbuildinfo
+
+# ── Native build output (Capacitor copies dist/ into these) ────────────
+shops-app/android/app/build/
+shops-app/android/build/
+shops-app/android/.gradle/
+shops-app/android/app/src/main/assets/public/
+shops-app/ios/App/App/public/
+shops-app/ios/DerivedData/
+
+# ── OS / editor ────────────────────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/

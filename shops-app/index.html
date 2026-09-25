@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- user-scalable=no was disabling pinch-to-zoom entirely -- an
+         accessibility failure (low-vision users can't zoom) with no
+         real upside, since nothing on this page needs to block zoom. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Suqafuran - Somalia's Marketplace</title>
+    <meta name="description" content="Buy and sell locally on Suqafuran -- browse thousands of products from local sellers and shops across Somalia, or list your own." />
+
+    <!-- Preconnect to image CDNs (Cloudinary + Unsplash) so DNS + TLS shake hands early -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Suqafuran" />
+    <meta property="og:title" content="Suqafuran - Somalia's Marketplace" />
+    <meta property="og:description" content="Buy and sell locally on Suqafuran -- browse thousands of products from local sellers and shops across Somalia, or list your own." />
+    <meta property="og:image" content="https://suqafuran.so/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://suqafuran.so" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Suqafuran - Somalia's Marketplace" />
+    <meta name="twitter:description" content="Buy and sell locally on Suqafuran -- browse thousands of products from local sellers and shops across Somalia, or list your own." />
+    <meta name="twitter:image" content="https://suqafuran.so/og-image.png" />
+
+    <!-- Theme detection script runs before React hydration to prevent flash -->
+    <script>
+      (function() {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          const isDark = savedTheme === 'dark';
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {
+          console.log('Theme initialization failed:', e);
+        }
+      })();
+    </script>
+
+  </head>
+  <body class="antialiased bg-[#F8FAFC] text-[#0F172A] dark:bg-[#0B132B] dark:text-[#F8FAFC] overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Mixpanel analytics -- moved out of <head> and loaded after the app
+         entry script. This inline block used to run synchronously during
+         HTML parsing before any page content, contributing directly to the
+         "render-blocking requests" Lighthouse finding; the library file
+         itself was already fetched async, only this stub/init block
+         wasn't. Session recording still starts effectively immediately
+         (this fires as soon as the browser reaches end of body, well
+         before full page load), it's just no longer ahead of the content
+         the visitor actually came to see. -->
+    <script type="text/javascript">
+      (function(e,c){if(!c.__SV){var l,h;window.mixpanel=c;c._i=[];c.init=function(q,r,f){function t(d,a){var g=a.split(".");2==g.length&&(d=d[g[0]],a=g[1]);d[a]=function(){d.push([a].concat(Array.prototype.slice.call(arguments,0)))}}var b=c;"undefined"!==typeof f?b=c[f]=[]:f="mixpanel";b.people=b.people||[];b.toString=function(d){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);d||(a+=" (stub)");return a};b.people.toString=function(){return b.toString(1)+".people (stub)"};l="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders start_session_recording stop_session_recording people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+      for(h=0;h<l.length;h++)t(b,l[h]);var n="set set_once union unset remove delete".split(" ");b.get_group=function(){function d(p){a[p]=function(){b.push([g,[p].concat(Array.prototype.slice.call(arguments,0))])}}for(var a={},g=["get_group"].concat(Array.prototype.slice.call(arguments,0)),m=0;m<n.length;m++)d(n[m]);return a};c._i.push([q,r,f])};c.__SV=1.2;var k=e.createElement("script");k.type="text/javascript";k.async=!0;k.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===
+      e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=e.getElementsByTagName("script")[0];e.parentNode.insertBefore(k,e)}})(document,window.mixpanel||[])
+
+      mixpanel.init('e40e37bb912cdc3c77abf7817c246c19', {
+        autocapture: true,
+        record_sessions_percent: 100,
+      })
+    </script>
+  </body>
+</html>
